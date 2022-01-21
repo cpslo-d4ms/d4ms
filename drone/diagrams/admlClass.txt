@@ -1,0 +1,38 @@
+@startuml
+
+class Map {
+	mapPos : float[]
+	vehicleAttributes : String[]
+	refreshRate : Integer
+	constructor() : void
+	render() : void
+	componentDidMount() : void
+	getMapPos() : float[]
+}
+
+class Server {
+	health_and_status() : Response
+	exec_takeoff() : Response
+	exec_RTL() : Response
+	exec_misson() : Response
+	changeTargetAltitude() : Response
+	exec_connect() : Response
+}
+
+class Fly {
+	targetAltitude : Float
+	vehicle	: Vehicle
+	udps : String[]
+	RTL() : void
+	arm_and_takeoff() : void
+	mission_go() : void
+	connect() : void
+	set_target_altitude(Float targetAltitude) : void
+	get_status() : String[]
+	get_mission_coords(Float[][] : boundingBox) : Float[][]
+	make_goto_command(Float[] : coordinates) : Command
+}	
+
+Server <-- Fly
+
+@enduml

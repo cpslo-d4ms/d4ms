@@ -1,0 +1,4 @@
+flask
+dronekit
+dronekit_sitl
+numpy

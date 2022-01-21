@@ -1,0 +1,20 @@
+@startuml
+
+card connect() {
+
+start
+
+:i = -1;
+repeat
+:i++;
+:vehicle = connect(udp[i], wait_ready = True)|
+repeat while(error?) is (yes)
+
+:RTL_ALT = 1000 cm;
+:RTL_LOIT_TIME = 0;
+
+
+end
+}
+
+@enduml

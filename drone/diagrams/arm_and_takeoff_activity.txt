@@ -1,0 +1,25 @@
+@startuml
+
+card "arm_and_takeoff()" {
+start
+
+while (vehicle is armable?) is (no)
+	:Sleep 1 second;	
+endwhile (yes)
+
+:vehicle.mode = GUIDED;
+:vehicle.armed =  True;
+
+while (vehicle is armed?) is (no)
+	:Sleep 1 second;
+endwhile (yes)
+
+:vehicle.simple_takeoff(targetAltitude)|
+
+repeat
+	:Sleep 1 second;
+repeat while (altitude == target altitude?)  is (no)
+
+stop
+}
+@enduml

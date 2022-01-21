@@ -1,0 +1,15 @@
+@startuml
+
+card getStatus() {
+start
+
+:status[0] = vehicle.battery.level;
+:status[1] = vehicle.location.global_relative_frame.lat;
+:status[2] = vehicle.location.global_relative_frame.lon;
+:status[3] = vehicle.location.gloabal_relative_frame.alt;
+:return status;
+
+end
+}
+
+@enduml

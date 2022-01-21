@@ -1,0 +1,16 @@
+@startuml
+
+' Activity Diagram for RTL() in Fly.py
+
+card RTL() {
+start
+
+:"vehicle.mode = RTL";
+
+while (check vehicle.mode) is (not RTL)
+	:Sleep 1 second;
+endwhile (is RTL)
+
+stop
+}
+@enduml

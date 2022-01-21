@@ -1,0 +1,21 @@
+@startuml
+
+card mission_go(boundingBox) {
+start
+
+:coordinates = getMissionCoords(boundingBox)|
+:"i = 0;
+while (i < sizeof(coordinates)?) is (yes) 
+	:command = make_goto_command(coordinates[i])|
+	:add(command)|
+endwhile (no)
+
+:command = make_goto_command(homeLocation)|
+:add(command)|
+:upload()|
+:vehicle.mode = AUTO;
+
+end
+}
+
+@enduml

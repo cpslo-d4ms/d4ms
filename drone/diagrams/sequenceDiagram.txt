@@ -1,0 +1,79 @@
+@startuml
+
+' Sequence Diagram for ADML 
+skinparam sequenceBoxBorderColor #004023
+
+' Participants 
+actor		User  			as usr
+participant	"Frontend Web App" 	as fe
+participant	"Companion Computer" 	as comp
+participant	"Flight Controller" 	as contr
+
+' Messages 
+
+' Draw Rectangle
+usr -> fe 	: Draw Rectangle
+activate fe
+usr <-- fe 	: Display Rectangle
+deactivate fe
+
+' Set Altitude
+usr -> fe	: Change Mission Altitude
+activate fe
+fe -> comp	: set_misstion_altitude(altitude)
+usr <--	fe	: Print New Mission Altitude
+deactivate fe
+
+' Takeoff
+usr -> fe 	: Click Takeoff Button
+activate fe
+fe -> comp 	: arm_and_takeoff()
+activate comp
+comp -> contr 	: vehicle.mode = GUIDED
+activate contr
+comp -> contr 	: vehicle.simpleTakeoff(altitude)
+deactivate contr
+fe <-- comp 	: Takeoff Status Response
+deactivate comp
+usr <-- fe	: Print Takeoff Status
+deactivate fe
+
+' RTL
+usr -> fe	: Click RTL Button
+activate fe
+fe -> comp	: RTL
+activate comp
+comp -> contr	: vehicle.mode = RTL
+fe <-- comp	: RTL Status Response
+deactivate comp
+usr <-- fe	: Print RTL Status
+deactivate fe
+
+' Mission Start
+usr -> fe	: Click Mission Start Button
+activate fe
+fe -> comp	: mission_go(rectangle)
+activate comp
+comp -> contr	: clear_commands()
+activate contr
+comp -> contr	: upload_commands(waypoints)
+comp -> contr	: vehicle.mode = AUTO
+deactivate contr
+fe <-- comp	: Mission Status Response
+deactivate comp
+usr <-- fe	: Print Mission Status
+deactivate fe
+
+' Data flow
+group At Output Interval
+comp <- contr	: Sensor Data
+end
+
+group At Refresh Rate
+fe <- comp	: Sensor Data Response
+activate fe
+usr <- fe	: Print Sensor Data 
+deactivate fe
+end
+
+@enduml

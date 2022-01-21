@@ -1,0 +1,46 @@
+@startuml
+
+package react {
+	[Component]
+}
+package axios {
+	[Axios]
+}
+package esri-loader {
+	[loadModules]
+}
+
+package map.js {
+	[Map] 
+}
+
+package server.py {
+	[Server]
+}
+package fly.py {
+	[Fly]
+}
+package logging {
+	[Logging]
+}
+
+package flask {
+	[Flask]
+}
+package dronekit {
+	[Dronekit]
+}
+
+[Component] --> Map
+[Axios] --> Map
+[loadModules] --> Map
+
+[Logging] --> [Server]
+[Flask] --> [Server]
+[Fly] --> [Server]
+
+[Dronekit] --> [Fly]
+
+
+@enduml
+
