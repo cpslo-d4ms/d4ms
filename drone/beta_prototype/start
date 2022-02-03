@@ -1,0 +1,5 @@
+#!/bin/bash
+sudo stty -F /dev/ttyAMA0 921600
+pip install -r requirements.txt
+export FLASK_APP=server.py
+python3 server.py
