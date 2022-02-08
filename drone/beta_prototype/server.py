@@ -53,5 +53,6 @@ def mission_go():
     resp.headers['Access-Control-Allow-Origin'] = '*'
     return resp
 
-if __name__ == "__main__":
+#if __name__ == "__main__":
+def run_server():
     app.run(host='0.0.0.0', port=5000)

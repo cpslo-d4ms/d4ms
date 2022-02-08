@@ -6,6 +6,8 @@ import math
 import struct
 import signal
 import time
+#import subprocess
+from server import run_server
 
 MAX_DATA_SIZE = 2**16 # maximum payload size for UDP packet is 2^16 = 65536 bytes
 
@@ -88,10 +90,13 @@ if __name__ == "__main__":
     # Register the SIGINT handler
     signal.signal(signal.SIGINT, signal_handler)
 
-    
     # Create separate thread for sending video to the Jetson Nano
     sender = thread.Thread(target=stream_video)
+    server = thread.Thread(target=run_server)
 
     # Start the video streaming thread and wait in this thread until it completes
     sender.start()
+    server.start()
+    
+    server.join()
     sender.join()
