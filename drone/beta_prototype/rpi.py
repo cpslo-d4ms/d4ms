@@ -92,11 +92,11 @@ if __name__ == "__main__":
 
     # Create separate thread for sending video to the Jetson Nano
     sender = thread.Thread(target=stream_video)
-    server = thread.Thread(target=run_server)
+    server = thread.Thread(target=run_server, daemon=True)
 
     # Start the video streaming thread and wait in this thread until it completes
     sender.start()
     server.start()
     
-    server.join()
+    #server.join()
     sender.join()
