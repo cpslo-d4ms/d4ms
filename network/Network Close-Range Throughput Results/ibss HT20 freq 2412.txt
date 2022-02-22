@@ -1,0 +1,43 @@
+-----------------------------------------------------------
+Server listening on TCP port 5001
+TCP window size:  128 KByte (default)
+------------------------------------------------------------
+[  4] local 192.168.4.1 port 5001 connected with 192.168.4.2 port 45776
+[ ID] Interval       Transfer     Bandwidth
+[  4]  0.0-10.8 sec  21.8 MBytes  16.9 Mbits/sec
+[  4] local 192.168.4.1 port 5001 connected with 192.168.4.2 port 45778
+[  4]  0.0-11.0 sec  23.2 MBytes  17.7 Mbits/sec
+[  4] local 192.168.4.1 port 5001 connected with 192.168.4.2 port 45782
+[  4]  0.0-10.8 sec  21.2 MBytes  16.5 Mbits/sec
+[  4] local 192.168.4.1 port 5001 connected with 192.168.4.2 port 45784
+[  4]  0.0-10.8 sec  22.9 MBytes  17.7 Mbits/sec
+[  4] local 192.168.4.1 port 5001 connected with 192.168.4.2 port 45786
+[  4]  0.0-10.7 sec  22.6 MBytes  17.8 Mbits/sec
+[  4] local 192.168.4.1 port 5001 connected with 192.168.4.2 port 45788
+[  4]  0.0-10.8 sec  18.0 MBytes  14.0 Mbits/sec
+[  4] local 192.168.4.1 port 5001 connected with 192.168.4.2 port 45790
+[  4]  0.0-11.0 sec  23.2 MBytes  17.7 Mbits/sec
+[  4] local 192.168.4.1 port 5001 connected with 192.168.4.2 port 45792
+[  4]  0.0-10.6 sec  23.0 MBytes  18.2 Mbits/sec
+[  4] local 192.168.4.1 port 5001 connected with 192.168.4.2 port 45794
+[  4]  0.0-10.9 sec  23.8 MBytes  18.3 Mbits/sec
+[  4] local 192.168.4.1 port 5001 connected with 192.168.4.2 port 45796
+[  4]  0.0-11.0 sec  24.2 MBytes  18.5 Mbits/sec
+[  4] local 192.168.4.1 port 5001 connected with 192.168.4.2 port 45798
+[  4]  0.0-10.4 sec  25.4 MBytes  20.4 Mbits/sec
+[  4] local 192.168.4.1 port 5001 connected with 192.168.4.2 port 45800
+[  4]  0.0-10.7 sec  27.0 MBytes  21.3 Mbits/sec
+[  4] local 192.168.4.1 port 5001 connected with 192.168.4.2 port 45802
+[  4]  0.0-10.8 sec  26.5 MBytes  20.6 Mbits/sec
+[  4] local 192.168.4.1 port 5001 connected with 192.168.4.2 port 45804
+[  4]  0.0-10.6 sec  25.5 MBytes  20.2 Mbits/sec
+[  4] local 192.168.4.1 port 5001 connected with 192.168.4.2 port 45806
+[  4]  0.0-10.4 sec  21.5 MBytes  17.3 Mbits/sec
+[  4] local 192.168.4.1 port 5001 connected with 192.168.4.2 port 45808
+[  4]  0.0-10.7 sec  27.4 MBytes  21.5 Mbits/sec
+[  4] local 192.168.4.1 port 5001 connected with 192.168.4.2 port 45810
+[  4]  0.0-10.9 sec  26.5 MBytes  20.3 Mbits/sec
+[  4] local 192.168.4.1 port 5001 connected with 192.168.4.2 port 45812
+[  4]  0.0-10.7 sec  26.9 MBytes  21.1 Mbits/sec
+[  4] local 192.168.4.1 port 5001 connected with 192.168.4.2 port 45814
+[  4]  0.0-10.7 sec  19.4 MBytes  15.2 Mbits/sec

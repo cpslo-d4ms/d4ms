@@ -1,0 +1,8 @@
+How to execute scripts:
+
+Mesh Network Script
+
+bash setMeshPointScript.sh <IP address> <Channel 1-11> <NOHT|HT20|HT40+>
+
+
+bash adHocNetworkScript.sh <IP address> <channel frequency in Mhz> <NOHT|HT20|HT40+>

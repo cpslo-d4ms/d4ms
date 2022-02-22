@@ -1,0 +1,32 @@
+pi@raspberrypi:~/Desktop $ iperf -s
+------------------------------------------------------------
+Server listening on TCP port 5001
+TCP window size:  128 KByte (default)
+------------------------------------------------------------
+[  4] local 192.168.4.2 port 5001 connected with 192.168.4.1 port 33576
+[ ID] Interval       Transfer     Bandwidth
+[  4]  0.0-10.3 sec  7.62 MBytes  6.21 Mbits/sec
+[  4] local 192.168.4.2 port 5001 connected with 192.168.4.1 port 33578
+[  4]  0.0-10.3 sec  7.25 MBytes  5.90 Mbits/sec
+[  4] local 192.168.4.2 port 5001 connected with 192.168.4.1 port 33580
+[  4]  0.0-12.3 sec  1.50 MBytes  1.02 Mbits/sec
+[  4] local 192.168.4.2 port 5001 connected with 192.168.4.1 port 33582
+[  4]  0.0- 8.5 sec  1.12 MBytes  1.10 Mbits/sec
+[  4] local 192.168.4.2 port 5001 connected with 192.168.4.1 port 33584
+[  4]  0.0-12.3 sec  1.50 MBytes  1.03 Mbits/sec
+[  4] local 192.168.4.2 port 5001 connected with 192.168.4.1 port 33586
+[  4]  0.0- 8.5 sec  1.25 MBytes  1.23 Mbits/sec
+[  4] local 192.168.4.2 port 5001 connected with 192.168.4.1 port 33590
+[  4]  0.0-12.3 sec  1.62 MBytes  1.11 Mbits/sec
+[  4] local 192.168.4.2 port 5001 connected with 192.168.4.1 port 33592
+[  4]  0.0- 8.7 sec  1.25 MBytes  1.21 Mbits/sec
+[  4] local 192.168.4.2 port 5001 connected with 192.168.4.1 port 33594
+[  4]  0.0-13.3 sec  7.62 MBytes  4.79 Mbits/sec
+[  4] local 192.168.4.2 port 5001 connected with 192.168.4.1 port 33596
+[  4]  0.0-12.3 sec  1.50 MBytes  1.02 Mbits/sec
+
+tx bitrate:	18.0 MBit/s
+	rx bitrate:	18.0 MBit/s
+	rx duration:	0 us
+	expected throughput:	13.366Mbps
+
