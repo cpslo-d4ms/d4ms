@@ -1,8 +1,15 @@
 How to execute scripts:
 
 Mesh Network Script
-
 bash setMeshPointScript.sh <IP address> <Channel 1-11> <NOHT|HT20|HT40+>
 
-
+Ad Hoc Network Script
 bash adHocNetworkScript.sh <IP address> <channel frequency in Mhz> <NOHT|HT20|HT40+>
+
+
+Mesh Network Startup Script (used to automatically join mesh network on startup)
+
+change the IP address in the setMeshPointStartupScript.sh to the desired IP for the device.
+Then run the following command:
+./establishMeshPointStartupScript.sh
+Reboot the devicee after running the script and device should automatically join PIMESH on startup.
