@@ -6,8 +6,8 @@ import math
 import struct
 import signal
 import time
-#import subprocess
-from server import run_server
+import sys
+#from server import run_server
 
 MAX_DATA_SIZE = 2**16 # maximum payload size for UDP packet is 2^16 = 65536 bytes
 
@@ -19,6 +19,9 @@ RPI_ADDR = ("172.16.0.1", 49152)
 
 # Global boolean to tell the code when to stop streaming video and clean up
 stop_stream = False
+
+# Global boolean to indicate if the program should run in test mode
+test_mode = False
 
 
 '''
@@ -69,15 +72,20 @@ def stream_video():
     vidSock = sock.socket(family=sock.AF_INET,
                           type=sock.SOCK_DGRAM,
                           proto=0)
-    vidSock.bind(RPI_MSG_ADDR)
+    vidSock.bind(RPI_ADDR)
 
     # Send an initial handshake packet to the Jetson Nano to establish connection
     hello_msg = bytearray("Hello", encoding="utf-8")
-    vidSock.sendto(hello_msg, NANO_VID_ADDR)
+    vidSock.sendto(hello_msg, NANO_ADDR)
     data, addr = vidSock.recvfrom(MAX_DATA_SIZE) # block here until acknowledgment received from Jetson Nano
     
-    # Open video file with data to send
-    vid = opencv.VideoCapture(0) # capture frames from the Raspberry Pi camera
+    if not test_mode:
+        # Open video camera with data to send
+        vid = opencv.VideoCapture(0) # capture frames from the Raspberry Pi camera
+    else:
+        # Open test video file with data to send
+        vid = opencv.VideoCapture("test/test.mp4")
+
     while not stop_stream:
        status, frame = vid.read() # read a frame from the video file
        if not status:
@@ -90,11 +98,11 @@ def stream_video():
        # Split the compressed video frame into a series of UDP packets to be transmitted
        udpFrames = generate_udp_frames(compressed.tostring())
        for i in range(0, len(udpFrames)): # send each frame serially to the Nano
-            vidSock.sendto(udpFrames[i], NANO_VID_ADDR)
+            vidSock.sendto(udpFrames[i], NANO_ADDR)
 
     # Give receiver time to process its last frame(s) and send an all-done message   
     time.sleep(1)
-    vidSock.sendto(struct.pack("!I", 0xdeadbeef), NANO_VID_ADDR) 
+    vidSock.sendto(struct.pack("!I", 0xdeadbeef), NANO_ADDR) 
 
     # Release all resources allocated to openCV and the socket
     vid.release()
@@ -103,6 +111,12 @@ def stream_video():
 
 
 if __name__ == "__main__":
+
+    # Parse command-line arguments
+    if len(sys.argv) > 1:
+        if sys.argv[1] == '-t':
+            test_mode = True
+    print("Test mode: {0}".format(test_mode))
 
     # Register the SIGINT handler
     signal.signal(signal.SIGINT, signal_handler)
