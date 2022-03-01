@@ -28,7 +28,6 @@ def receive_video():
     # Bind the UDP video socket to the desired port and IP address
     try:
         vidSock.bind(NANO_ADDR)
-        logger.info("Bound receiver to video addr (IP: %s, Port: %d)\n", NANO_ADDR[0], NANO_ADDR[1])
         data, addr = vidSock.recvfrom(MAX_DATA_SIZE)
         vidSock.sendto(b'Hello Nano', RPI_ADDR)
         data = b'' # data buffer to read into
@@ -39,7 +38,7 @@ def receive_video():
 
         # Define handler for saving video to an output file
         #                           File name         codec   fps  frame size
-        out = opencv.VideoWriter("camera_output.mp4", codec, 20.0, (640, 480))
+        out = opencv.VideoWriter("camera_output.mp4", codec, 5.0, (1280, 720))
 
         while True:
             packet, addr = vidSock.recvfrom(MAX_DATA_SIZE)
@@ -72,7 +71,7 @@ def receive_video():
         vidSock.close()
 
     except sock.error as msg:
-        logger.error("bind() call raised exception: %s\n", msg.strerror)
+        print("bind() call raised exception: %s\n", msg.strerror)
 
 
         
