@@ -7,7 +7,7 @@ import struct
 import signal
 import time
 import sys
-#from server import run_server
+from server import run_server
 
 MAX_DATA_SIZE = 2**16 # maximum payload size for UDP packet is 2^16 = 65536 bytes
 
@@ -23,6 +23,9 @@ stop_stream = False
 # Global boolean to indicate if the program should run in test mode
 test_mode = False
 
+# Macros for camera setting codes in OpenCV
+FRAME_WIDTH = 3
+FRAME_HEIGHT = 4
 
 '''
     Signal handler that handles SIGINT being sent by the user to stop the RPI
@@ -86,6 +89,10 @@ def stream_video():
         # Open test video file with data to send
         vid = opencv.VideoCapture("test/test.mp4")
 
+    # Set the camera to capture in 720p
+    vid.set(FRAME_WIDTH, 1280)
+    vid.set(FRAME_HEIGHT, 720)
+
     while not stop_stream:
        status, frame = vid.read() # read a frame from the video file
        if not status:
@@ -99,7 +106,8 @@ def stream_video():
        udpFrames = generate_udp_frames(compressed.tostring())
        for i in range(0, len(udpFrames)): # send each frame serially to the Nano
             vidSock.sendto(udpFrames[i], NANO_ADDR)
-
+       
+       time.sleep(0.1)    
     # Give receiver time to process its last frame(s) and send an all-done message   
     time.sleep(1)
     vidSock.sendto(struct.pack("!I", 0xdeadbeef), NANO_ADDR) 
