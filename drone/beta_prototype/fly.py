@@ -4,12 +4,20 @@ import math
 
 targetAltitude = 10
 
+# Failsafe procedure code for RTL in case of disconnection from GCS
+RTL = 1
+
 def connect_drone(connection_string):
     global vehicle
     vehicle = connect(connection_string, wait_ready=True, baud=921600)
     print('Connected!')
+
+    # Set the vehicle parameters for RTL
     vehicle.parameters['RTL_ALT'] = 1000.0
     vehicle.parameters['RTL_LOIT_TIME'] = 0.0
+
+    # Set the vehicle's failsafe procedure in case of disconnection from GCS
+    vehicle.parameters['FCS_FCS_ENABLE'] = RTL
 
 def RTL():
     vehicle.mode = VehicleMode("RTL")
